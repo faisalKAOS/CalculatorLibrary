@@ -21,7 +21,7 @@ public class ResultProvider {
                 result = String.valueOf(num1*num2);
                 break;
             case "div":
-                if(num1>num2){
+                if(num1>=num2){
                     result = String.valueOf(num1/num2);
                 }else {
 
