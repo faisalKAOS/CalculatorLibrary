@@ -7,6 +7,7 @@ import android.util.Log;
  */
 public class ResultProvider {
     private static String result;
+    static Items items = new Items();
     public static String calculate(Integer num1, Integer num2, String flag){
         switch (flag){
             case "add":
@@ -24,5 +25,21 @@ public class ResultProvider {
 
         }
         return result;
+    }
+
+    public static void calculateAll(Integer number1,Integer number2){
+
+        String add = String.valueOf(number1+number2);
+        items.setResultAdd(add);
+
+        String sub = String.valueOf(number1-number2);
+        items.setResultSub(sub);
+
+        String mul = String.valueOf(number1*number2);
+        items.setResultSub(mul);
+
+        String div = String.valueOf(number1/number2);
+        items.setResultSub(div);
+
     }
 }
