@@ -6,7 +6,10 @@ package com.lostinkaos.calculatorlibrary;
 public class Items {
     int number1;
     int number2;
-    String resultAdd,resultSub,resultMul,resultDiv;
+    String resultAdd;
+    String resultSub;
+    String resultMul;
+    String resultDiv;
 
 
     public String getResultAdd() {

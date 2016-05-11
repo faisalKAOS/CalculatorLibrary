@@ -7,6 +7,7 @@ import android.util.Log;
  */
 public class ResultProvider {
     private static String result;
+    public static String addRes,subRes,mulRes,divRes;
     static Items items = new Items();
     public static String calculate(Integer num1, Integer num2, String flag){
         switch (flag){
@@ -20,7 +21,16 @@ public class ResultProvider {
                 result = String.valueOf(num1*num2);
                 break;
             case "div":
-                result = String.valueOf(num1/num2);
+                if(num1>num2){
+                    result = String.valueOf(num1/num2);
+                }else {
+
+                    try {
+                        throw new Exception("first number is less than second");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
 
         }
@@ -31,15 +41,25 @@ public class ResultProvider {
 
         String add = String.valueOf(number1+number2);
         items.setResultAdd(add);
-
+        addRes = items.getResultAdd();
         String sub = String.valueOf(number1-number2);
         items.setResultSub(sub);
-
+        subRes = items.getResultSub();
         String mul = String.valueOf(number1*number2);
-        items.setResultSub(mul);
+        items.setResultMul(mul);
+        mulRes = items.getResultMul();
+        if(number1>=number2) {
+            String div = String.valueOf(number1 / number2);
+            items.setResultDiv(div);
+            divRes = items.getResultDiv();
+        }else {
+            try {
+                throw new Exception("first number is less than second");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        String div = String.valueOf(number1/number2);
-        items.setResultSub(div);
+        }
 
     }
 }
