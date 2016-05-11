@@ -37,7 +37,7 @@ public class ResultProvider {
         return result;
     }
 
-    public static void calculateAll(Integer number1,Integer number2){
+    public static void calculateAll(Integer number1,Integer number2)throws Exception{
 
         String add = String.valueOf(number1+number2);
         items.setResultAdd(add);
