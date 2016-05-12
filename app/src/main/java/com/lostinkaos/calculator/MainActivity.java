@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     TextView mMul;
     @Bind(R.id.tvDiv)
     TextView mDiv;
+    @Bind(R.id.tvMod)
+    TextView mMod;
 
 
     Items items = new Items();
@@ -43,17 +45,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 items.setNumber1(Integer.parseInt(mNumber1.getText().toString()));
                 items.setNumber2(Integer.parseInt(mNumber2.getText().toString()));
-              ResultProvider.calculateAll(items.getNumber1(),items.getNumber2());
+            //  ResultProvider.calculateAll(items.getNumber1(),items.getNumber2());
                // Log.d("res",items.getResultAdd());
                 ResultProvider resultProvider = new ResultProvider();
-                mAdd.setText(resultProvider.addRes);
+                Integer resAdd = resultProvider.funAdd(items.getNumber1(), items.getNumber2());
+                mAdd.setText(String.valueOf(resAdd));
+                Integer resSub = resultProvider.funSub(items.getNumber1(), items.getNumber2());
+                mSub.setText(String.valueOf(resSub));
 
-                mSub.setText(resultProvider.subRes);
+              Integer resMul = resultProvider.funMul(items.getNumber1(), items.getNumber2());
+                mMul.setText(String.valueOf(resMul));
 
-                mMul.setText(resultProvider.mulRes);
-                mDiv.setText(resultProvider.divRes);
+                Integer resDiv = null;
+                try {
+                    resDiv = resultProvider.funDiv(items.getNumber1(), items.getNumber2());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mDiv.setText(String.valueOf(resDiv));
 
-
+                Integer resMod = null;
+                try {
+                    resMod = resultProvider.funMod(items.getNumber1(), items.getNumber2());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mMod.setText(String.valueOf(resMod));
             }
         });
 
